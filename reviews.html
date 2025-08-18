@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salon Reviews</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            salonblack: '#151515',
+            salonoff: '#f2f1f0',
+            salonwhite: '#ffffff'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-salonblack min-h-screen">
+  <!-- Navigation -->
+  <nav class="flex w-full justify-between items-center px-12 pt-8 z-10">
+    <div class="font-bold text-2xl text-salonwhite">MJV Salon</div>
+    <div class="flex gap-12 text-salonwhite font-light text-lg">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="services.html">SERVICES</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="specialist.html">SPECIALIST</a>
+      <a href="gallery.html">GALLERY</a>
+      <a href="reviews.html" class="border-b border-salonwhite">REVIEWS</a>
+    </div>
+    <a href="booknow.html" class="border border-salonwhite px-4 py-2 rounded text-salonwhite hover:bg-salonwhite hover:text-salonblack transition">GET IN TOUCH</a>
+  </nav>
+
+  <div class="min-h-screen flex flex-col items-center justify-center px-4 py-10">
+    <div class="bg-salonoff w-full max-w-6xl rounded-none md:rounded-xl shadow-lg p-8 md:p-12">
+
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+        <div>
+          <span class="uppercase text-xs tracking-widest text-salonblack/70">About us and more</span>
+          <h1 class="text-5xl md:text-6xl font-bold text-salonblack mt-2 mb-0 leading-tight tracking-tight">REVIEWS</h1>
+        </div>
+        <a href="#" class="mt-4 md:mt-0 text-salonblack underline underline-offset-4 hover:text-salonblack/70 transition text-base font-medium">More reviews</a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+
+        <div class="bg-salonwhite rounded-lg shadow flex flex-col">
+          <img src="https://images.unsplash.com/photo-1574015974293-817f0ebebb74?q=80&w=673&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Review 1" class="w-full h-64 object-cover rounded-t-lg">
+          <div class="p-5">
+            <span class="block text-xs text-salonblack/60 mb-1">24 MAY 2024</span>
+            <h3 class="font-semibold text-lg text-salonblack mb-1">John Doe</h3>
+            <p class="text-salonblack/80 text-sm">I would like to express my gratitude to hairdresser Nellie Russell! She is a real master of her craft...</p>
+          </div>
+        </div>
+
+        <div class="bg-salonwhite rounded-lg shadow flex flex-col">
+          <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Review 2" class="w-full h-64 object-cover rounded-t-lg">
+          <div class="p-5">
+            <span class="block text-xs text-salonblack/60 mb-1">4 JUNE 2024</span>
+            <h3 class="font-semibold text-lg text-salonblack mb-1">John Doe</h3>
+            <p class="text-salonblack/80 text-sm">The result exceeded my expectations - the new haircut looks natural and stylish.</p>
+          </div>
+        </div>
+
+        <div class="bg-salonwhite rounded-lg shadow flex flex-col">
+          <img src="https://images.unsplash.com/photo-1690642143805-34aa01fdbba8?q=80&w=738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Review 3" class="w-full h-64 object-cover rounded-t-lg">
+          <div class="p-5">
+            <span class="block text-xs text-salonblack/60 mb-1">15 JUNE 2024</span>
+            <h3 class="font-semibold text-lg text-salonblack mb-1">John Doe</h3>
+            <p class="text-salonblack/80 text-sm">Kate took into account all my wishes and created the perfect haircut that suits my face type perfectly.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center bg-salonoff rounded-lg p-6 md:p-10 border-t border-salonblack/10">
+        <div class="col-span-1 md:col-span-1 mb-6 md:mb-0">
+          <span class="uppercase text-xs tracking-widest text-salonblack/70">We are waiting for you</span>
+          <h2 class="text-4xl font-bold text-salonblack mt-2 mb-0 leading-tight tracking-tight">BOOK AN<br>APPOINTMENT</h2>
+        </div>
+        <div class="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-xs text-salonblack/60 mb-1">Name</label>
+            <input type="text" value="Alisa Datte" class="w-full bg-salonwhite border border-salonoff rounded px-3 py-2 text-salonblack font-medium focus:outline-none focus:ring-2 focus:ring-salonblack/20 transition" />
+          </div>
+          <div>
+            <label class="block text-xs text-salonblack/60 mb-1">Phone</label>
+            <input type="text" value="+1 (394) 331-12-73" class="w-full bg-salonwhite border border-salonoff rounded px-3 py-2 text-salonblack font-medium focus:outline-none focus:ring-2 focus:ring-salonblack/20 transition" />
+          </div>
+          <div>
+            <label class="block text-xs text-salonblack/60 mb-1">Specialist</label>
+            <input type="text" value="Nellie Russell" class="w-full bg-salonwhite border border-salonoff rounded px-3 py-2 text-salonblack font-medium focus:outline-none focus:ring-2 focus:ring-salonblack/20 transition" />
+          </div>
+          <div>
+            <label class="block text-xs text-salonblack/60 mb-1">Date</label>
+            <div class="flex gap-2">
+              <button class="px-4 py-2 bg-salonwhite border border-salonoff rounded font-medium text-salonblack hover:bg-salonoff transition">August 4</button>
+              <button class="px-4 py-2 bg-salonwhite border border-salonoff rounded font-medium text-salonblack hover:bg-salonoff transition">August 9</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

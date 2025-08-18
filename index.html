@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MJV Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#151515]">
+    <header class="relative w-full h-screen">
+    <div class="absolute inset-0 flex w-full h-full flex-col md:flex-row">
+        <div class="w-full md:w-1/2 h-1/2 md:h-full bg-cover bg-center" style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/048/657/454/small_2x/black-and-white-portrait-of-a-woman-with-short-hair-free-photo.jpeg');"></div>
+        <div class="w-full md:w-1/2 h-1/2 md:h-full bg-cover bg-center" style="background-image: url('https://i.pinimg.com/736x/4f/94/09/4f94096db61b72af4779f8048504a175.jpg');"></div>
+    </div>
+    <nav class="relative flex w-full justify-between items-center px-4 md:px-12 pt-6 md:pt-8 z-10">
+        <div class="font-bold text-xl md:text-2xl text-white">MJV Salon</div>
+        <div class="hidden md:flex gap-8 lg:gap-12 text-white font-light text-sm lg:text-lg">
+            <a href="about.html">ABOUT</a>
+            <a href="services.html">SERVICES</a>
+            <a href="contact.html">CONTACT</a>
+            <a href="specialist.html">SPECIALIST</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="reviews.html">REVIEWS</a>
+        </div>
+        <a href="booknow.html" class="border border-white px-3 py-2 md:px-4 md:py-2 rounded text-white hover:bg-white hover:text-[#151515] transition text-sm md:text-base">GET IN TOUCH</a>
+    </nav>
+    <div class="fixed bottom-0 left-0 w-1/2 hidden md:flex justify-center items-end p-4 z-10">
+        <span class="tracking-[1.5em] text-white text-xl md:text-2xl font-light ">FEMALE</span>
+    </div>
+    <div class="fixed bottom-0 right-0 w-1/2 hidden md:flex justify-center items-end p-4 z-10">
+        <span class="tracking-[1.5em] text-white text-xl md:text-2xl font-light">MALE</span>
+    </div>
+    </header>
+    <main class="relative z-10 bg-[#151515] text-white">
+        <section class="px-4 md:px-12 py-12 md:py-20">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">Crafting Beauty, Confidently</h2>
+                    <p class="text-white/70 leading-relaxed mb-6">At MJV Salon, we blend technique and taste to create hair that looks effortless and feels uniquely you. From precision cuts to modern color, our stylists focus on wearable styles that elevate your everyday.</p>
+                    <a href="about.html" class="inline-block border border-white px-5 py-3 rounded hover:bg-white hover:text-[#151515] transition">Learn more</a>
+                </div>
+                <div class="rounded-xl overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop" alt="Salon work" class="w-full h-72 md:h-96 object-cover">
+                </div>
+            </div>
+        </section>
+
+        <section class="px-4 md:px-12 py-12 md:py-20 bg-white text-[#151515]">
+            <div class="max-w-6xl mx-auto">
+                <h3 class="text-2xl md:text-4xl font-bold mb-8">Popular Services</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 rounded-xl border border-black/5 shadow bg-[#f2f1f0]">
+                        <h4 class="text-xl font-semibold mb-2">Haircut & Styling</h4>
+                        <p class="text-black/70 mb-4">Clean, modern cuts and styling tailored to face shape and lifestyle.</p>
+                        <a href="services.html" class="text-sm underline underline-offset-4">View details</a>
+                    </div>
+                    <div class="p-6 rounded-xl border border-black/5 shadow bg-[#f2f1f0]">
+                        <h4 class="text-xl font-semibold mb-2">Color & Balayage</h4>
+                        <p class="text-black/70 mb-4">Dimensional color that grows out beautifully and looks natural.</p>
+                        <a href="services.html" class="text-sm underline underline-offset-4">View details</a>
+                    </div>
+                    <div class="p-6 rounded-xl border border-black/5 shadow bg-[#f2f1f0]">
+                        <h4 class="text-xl font-semibold mb-2">Treatments</h4>
+                        <p class="text-black/70 mb-4">Strengthening, smoothing, and scalp treatments for healthy hair.</p>
+                        <a href="services.html" class="text-sm underline underline-offset-4">View details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-4 md:px-12 py-12 md:py-20">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 bg-white/5 border border-white/10 rounded-xl p-8">
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-bold">Book your appointment</h3>
+                    <p class="text-white/70">Reserve a time with our stylists and step out feeling your best.</p>
+                </div>
+                <a href="booknow.html" class="inline-block border border-white px-6 py-3 rounded hover:bg-white hover:text-[#151515] transition">Book now</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - MJV Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        salonblack: '#151515',
+                        salonoff: '#f2f1f0',
+                        salonwhite: '#ffffff'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-salonblack min-h-screen">
+    <!-- Navigation -->
+    <nav class="flex w-full justify-between items-center px-12 pt-8 z-10">
+        <div class="font-bold text-2xl text-salonwhite">MJV Salon</div>
+        <div class="flex gap-12 text-salonwhite font-light text-lg">
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="services.html">SERVICES</a>
+            <a href="contact.html">CONTACT</a>
+            <a href="specialist.html">SPECIALIST</a>
+            <a href="gallery.html" class="border-b border-salonwhite">GALLERY</a>
+            <a href="reviews.html">REVIEWS</a>
+        </div>
+        <a href="booknow.html" class="border border-salonwhite px-4 py-2 rounded text-salonwhite hover:bg-salonwhite hover:text-salonblack transition">GET IN TOUCH</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 py-10">
+        <div class="bg-salonoff w-full max-w-6xl rounded-none md:rounded-xl shadow-lg p-8 md:p-12">
+            
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+                <div>
+                    <span class="uppercase text-xs tracking-widest text-salonblack/70">Our work</span>
+                    <h1 class="text-5xl md:text-6xl font-bold text-salonblack mt-2 mb-0 leading-tight tracking-tight">GALLERY</h1>
+                </div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap gap-4 mb-8 justify-center">
+                <button class="px-6 py-2 bg-salonblack text-salonwhite rounded-full hover:bg-salonblack/80 transition">All</button>
+                <button class="px-6 py-2 bg-salonwhite text-salonblack rounded-full hover:bg-salonoff transition">Haircuts</button>
+                <button class="px-6 py-2 bg-salonwhite text-salonblack rounded-full hover:bg-salonoff transition">Coloring</button>
+                <button class="px-6 py-2 bg-salonwhite text-salonblack rounded-full hover:bg-salonoff transition">Styling</button>
+                <button class="px-6 py-2 bg-salonwhite text-salonblack rounded-full hover:bg-salonoff transition">Bridal</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- Gallery Item 1 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=1000&auto=format&fit=crop" alt="Haircut Style" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-salonblack/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="text-center text-salonwhite">
+                            <h3 class="text-lg font-semibold mb-2">Modern Bob Cut</h3>
+                            <p class="text-sm">Precision cutting technique</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1000&auto=format&fit=crop" alt="Hair Coloring" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-salonblack/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="text-center text-salonwhite">
+                            <h3 class="text-lg font-semibold mb-2">Balayage Highlights</h3>
+                            <p class="text-sm">Natural sun-kissed look</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1000&auto=format&fit=crop" alt="Hair Treatment" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-salonblack/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="text-center text-salonwhite">
+                            <h3 class="text-lg font-semibold mb-2">Deep Conditioning</h3>
+                            <p class="text-sm">Restorative treatment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROB4It6JUZ8Kd4PZ1Q5VxoXHikmvBJP7WrDg&s" alt="Hair Extensions" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-salonblack/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="text-center text-salonwhite">
+                            <h3 class="text-lg font-semibold mb-2">Hair Extensions</h3>
+                            <p class="text-sm">Length and volume</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop" alt="Bridal Styling" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-salonblack/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="text-center text-salonwhite">
+                            <h3 class="text-lg font-semibold mb-2">Bridal Updo</h3>
+                            <p class="text-sm">Elegant wedding style</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1000&auto=format&fit=crop" alt="Men's Grooming" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-salonblack/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="text-center text-salonwhite">
+                            <h3 class="text-lg font-semibold mb-2">Men's Cut</h3>
+                            <p class="text-sm">Contemporary styling</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 7 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?q=80&w=1000&auto=format&fit=crop" alt="Styling" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-salonblack/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="text-center text-salonwhite">
+                            <h3 class="text-lg font-semibold mb-2">Beach Waves</h3>
+                            <p class="text-sm">Natural texture styling</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 8 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://i.pinimg.com/736x/48/9e/3a/489e3a9554d378d489e6e47b7363207c.jpg" alt="Salon Interior" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-salonblack/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="text-center text-salonwhite">
+                            <h3 class="text-lg font-semibold mb-2">Our Salon</h3>
+                            <p class="text-sm">Modern and welcoming</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 9 -->
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop" alt="Hair Styling" class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-salonblack/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="text-center text-salonwhite">
+                            <h3 class="text-lg font-semibold mb-2">Layered Cut</h3>
+                            <p class="text-sm">Volume and movement</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="bg-salonwhite rounded-lg p-8 text-center">
+                <h3 class="text-2xl font-bold text-salonblack mb-4">Ready for Your Transformation?</h3>
+                <p class="text-salonblack/70 mb-6">Book an appointment with our expert stylists and let us create your perfect look.</p>
+                <button class="bg-salonblack text-salonwhite px-8 py-3 rounded-lg hover:bg-salonblack/80 transition font-medium">
+                    Book Appointment
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

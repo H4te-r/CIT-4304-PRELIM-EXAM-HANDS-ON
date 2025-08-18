@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specialists - MJV Salon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        salonblack: '#151515',
+                        salonoff: '#f2f1f0',
+                        salonwhite: '#ffffff'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-salonblack min-h-screen">
+    <!-- Navigation -->
+    <nav class="flex w-full justify-between items-center px-12 pt-8 z-10">
+        <div class="font-bold text-2xl text-salonwhite">MJV Salon</div>
+        <div class="flex gap-12 text-salonwhite font-light text-lg">
+            <a href="index.html">HOME</a>
+            <a href="about.html">ABOUT</a>
+            <a href="services.html">SERVICES</a>
+            <a href="contact.html">CONTACT</a>
+            <a href="specialist.html" class="border-b border-salonwhite">SPECIALIST</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="reviews.html">REVIEWS</a>
+        </div>
+        <a href="booknow.html" class="border border-salonwhite px-4 py-2 rounded text-salonwhite hover:bg-salonwhite hover:text-salonblack transition">GET IN TOUCH</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 py-10">
+        <div class="bg-salonoff w-full max-w-6xl rounded-none md:rounded-xl shadow-lg p-8 md:p-12">
+            
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+                <div>
+                    <span class="uppercase text-xs tracking-widest text-salonblack/70">Meet our team</span>
+                    <h1 class="text-5xl md:text-6xl font-bold text-salonblack mt-2 mb-0 leading-tight tracking-tight">SPECIALISTS</h1>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 items-stretch">
+                <!-- Specialist 1 -->
+                <div class="bg-salonwhite rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <img src="https://thumbs.dreamstime.com/b/beautiful-brown-haired-stylish-short-hairstyle-woman-curly-hair-young-freckles-face-closeup-portrait-attractive-257076435.jpg" alt="Nellie Russell" class="w-full h-80 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-salonblack mb-2">Nellie Russell</h3>
+                        <p class="text-salonblack/60 text-sm mb-3">Senior Stylist & Color Specialist</p>
+                        <p class="text-salonblack/70 text-sm mb-4">Specializing in balayage, highlights, and creative color techniques. 8+ years of experience in the industry.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Balayage</span>
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Highlights</span>
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Color</span>
+                        </div>
+                        <div class="mt-auto pt-4">
+                            <a href="booknow.html" class="w-full bg-salonblack text-salonwhite py-3 rounded hover:bg-salonblack/80 transition inline-block text-center font-medium">Book with Nellie</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialist 2 -->
+                <div class="bg-salonwhite rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <img src="https://img.freepik.com/free-photo/young-beautiful-woman-pink-warm-sweater-natural-look-smiling-portrait-isolated-long-hair_285396-896.jpg?semt=ais_hybrid&w=740&q=80" alt="Kate Johnson" class="w-full h-80 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-salonblack mb-2">Kate Johnson</h3>
+                        <p class="text-salonblack/60 text-sm mb-3">Cutting Specialist</p>
+                        <p class="text-salonblack/70 text-sm mb-4">Expert in precision cutting, styling, and creating personalized looks for all face shapes and hair types.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Precision Cuts</span>
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Styling</span>
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Consultation</span>
+                        </div>
+                        <div class="mt-auto pt-4">
+                            <a href="booknow.html" class="w-full bg-salonblack text-salonwhite py-3 rounded hover:bg-salonblack/80 transition inline-block text-center font-medium">Book with Kate</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialist 3 -->
+                <div class="bg-salonwhite rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" alt="Marcus Chen" class="w-full h-80 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-salonblack mb-2">Marcus Chen</h3>
+                        <p class="text-salonblack/60 text-sm mb-3">Men's Grooming Expert</p>
+                        <p class="text-salonblack/70 text-sm mb-4">Specialized in men's cuts, beard grooming, and contemporary styling techniques for the modern gentleman.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Men's Cuts</span>
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Beard Grooming</span>
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Styling</span>
+                        </div>
+                        <div class="mt-auto pt-4">
+                            <a href="booknow.html" class="w-full bg-salonblack text-salonwhite py-3 rounded hover:bg-salonblack/80 transition inline-block text-center font-medium">Book with Marcus</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialist 4 -->
+                <div class="bg-salonwhite rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1000&auto=format&fit=crop" alt="Sarah Williams" class="w-full h-80 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-salonblack mb-2">Sarah Williams</h3>
+                        <p class="text-salonblack/60 text-sm mb-3">Bridal & Event Specialist</p>
+                        <p class="text-salonblack/70 text-sm mb-4">Creating stunning bridal looks and special occasion styling that makes every moment memorable.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Bridal</span>
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Events</span>
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Updos</span>
+                        </div>
+                        <div class="mt-auto pt-4">
+                            <a href="booknow.html" class="w-full bg-salonblack text-salonwhite py-3 rounded hover:bg-salonblack/80 transition inline-block text-center font-medium">Book with Sarah</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialist 5 -->
+                <div class="bg-salonwhite rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNBoPbN2nK_NBVOMN2P_aE9VQBfChD8sz5aQ&s" alt="Alex Rodriguez" class="w-full h-80 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-salonblack mb-2">Alex Rodriguez</h3>
+                        <p class="text-salonblack/60 text-sm mb-3">Texture & Treatment Expert</p>
+                        <p class="text-salonblack/70 text-sm mb-4">Specializing in curly hair, texture treatments, and maintaining healthy hair through proper care.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Curly Hair</span>
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Treatments</span>
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Care</span>
+                        </div>
+                        <div class="mt-auto pt-4">
+                            <a href="booknow.html" class="w-full bg-salonblack text-salonwhite py-3 rounded hover:bg-salonblack/80 transition inline-block text-center font-medium">Book with Alex</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialist 6 -->
+                <div class="bg-salonwhite rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
+                    <img src="https://i0.wp.com/digital-photography-school.com/wp-content/uploads/2015/11/have-your-photo-taken-high-school.jpg?resize=717%2C478&ssl=1" alt="Emma Thompson" class="w-full h-80 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-salonblack mb-2">Emma Thompson</h3>
+                        <p class="text-salonblack/60 text-sm mb-3">Extensions & Volume Specialist</p>
+                        <p class="text-salonblack/70 text-sm mb-4">Expert in hair extensions, volume techniques, and creating dramatic transformations.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Extensions</span>
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Volume</span>
+                            <span class="px-3 py-1 bg-salonoff text-salonblack text-xs rounded-full">Transformations</span>
+                        </div>
+                        <div class="mt-auto pt-4">
+                            <a href="booknow.html" class="w-full bg-salonblack text-salonwhite py-3 rounded hover:bg-salonblack/80 transition inline-block text-center font-medium">Book with Emma</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Stats -->
+            <div class="bg-salonwhite rounded-lg p-8">
+                <h3 class="text-2xl font-bold text-salonblack mb-6 text-center">Our Team at a Glance</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-3xl font-bold text-salonblack mb-2">6</div>
+                        <div class="text-sm text-salonblack/60">Expert Stylists</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-salonblack mb-2">50+</div>
+                        <div class="text-sm text-salonblack/60">Years Combined Experience</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-salonblack mb-2">1000+</div>
+                        <div class="text-sm text-salonblack/60">Happy Clients</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-salonblack mb-2">15+</div>
+                        <div class="text-sm text-salonblack/60">Specializations</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
