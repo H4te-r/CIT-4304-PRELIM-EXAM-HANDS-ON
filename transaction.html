@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction Summary - MJV Salon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            salonblack: '#151515',
+            salonoff: '#f2f1f0',
+            salonwhite: '#ffffff'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-salonblack min-h-screen">
+  <!-- NAVBAR -->
+  <nav class="flex w-full justify-between items-center px-12 py-6 z-50 bg-salonblack sticky top-0">
+    <div class="font-bold text-2xl text-salonwhite">MJV Salon</div>
+    <div class="flex gap-12 text-salonwhite font-light text-lg">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="services.html">SERVICES</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="specialist.html">SPECIALIST</a>
+      <a href="gallery.html">GALLERY</a>
+      <a href="reviews.html">REVIEWS</a>
+    </div>
+    <a href="services.html" class="border border-salonwhite px-4 py-2 rounded text-salonwhite hover:bg-salonwhite hover:text-salonblack transition">Back to Shop</a>
+  </nav>
+
+  <!-- TRANSACTION CONTAINER -->
+  <div class="min-h-screen flex flex-col items-center justify-center px-4 py-10">
+    <div class="bg-salonoff w-full max-w-4xl rounded-lg shadow-lg p-8 md:p-12">
+      <div class="text-center mb-8">
+        <span class="uppercase text-xs tracking-widest text-salonblack/70">Order Summary</span>
+        <h1 class="text-4xl md:text-5xl font-bold text-salonblack mt-2">Your Cart</h1>
+        <p class="text-salonblack/70 mt-4">Review your selected services and discounts before booking.</p>
+      </div>
+
+      <!-- CART SUMMARY -->
+      <div id="cart-summary" class="mb-8"></div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="flex justify-between items-center mt-8">
+        <a href="services.html" class="bg-salonblack text-salonwhite px-6 py-3 rounded-lg hover:bg-salonblack/80 transition">Back to Services</a>
+        <button onclick="clearCart()" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition">Clear Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const services = [
+      { id: 1, name: "Haircut & Styling", price: 2500 },
+      { id: 2, name: "Hair Coloring", price: 6500 },
+      { id: 3, name: "Hair Treatment", price: 4500 },
+      { id: 4, name: "Hair Extensions", price: 16500 },
+      { id: 5, name: "Bridal Services", price: 11000 },
+      { id: 6, name: "Men's Grooming", price: 1900 },
+      { id: 7, name: "Complete Makeover Package", price: 9800 },
+      { id: 8, name: "Maintenance Package", price: 5200 }
+    ];
+
+    function getCart() {
+      return JSON.parse(localStorage.getItem('mjv_cart')) || {};
+    }
+
+    function clearCart() {
+      localStorage.removeItem('mjv_cart');
+      renderCartSummary();
+    }
+
+    function renderCartSummary() {
+      const cart = getCart();
+      const container = document.getElementById('cart-summary');
+
+      if (Object.keys(cart).length === 0) {
+        container.innerHTML = `<div class="text-center text-salonblack/60 text-lg py-12">Your cart is empty.</div>`;
+        return;
+      }
+
+      let html = `
+        <table class="w-full text-left mb-6 border-collapse">
+          <thead class="border-b border-salonblack/20">
+            <tr>
+              <th class="pb-2">Service</th>
+              <th class="pb-2">Price</th>
+              <th class="pb-2">Qty</th>
+              <th class="pb-2">Subtotal</th>
+              <th class="pb-2">Discount</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      let subtotal = 0;
+      let totalDiscount = 0;
+      let differentServices = Object.keys(cart).length;
+
+      // Loop each service in cart
+      Object.values(cart).forEach(item => {
+        let serviceSubtotal = item.price * item.qty;
+        let discount = 0;
+        let discountLabel = '';
+
+        // Apply same-service discount (10% if qty >= 3)
+        if (item.qty >= 3) {
+          discount = serviceSubtotal * 0.10;
+          discountLabel = '10% off (3+ same service)';
+        }
+
+        subtotal += serviceSubtotal;
+        totalDiscount += discount;
+
+        html += `
+          <tr class="border-b border-salonblack/10">
+            <td class="py-2">${item.name}</td>
+            <td class="py-2">₱${item.price.toLocaleString()}</td>
+            <td class="py-2">${item.qty}</td>
+            <td class="py-2">₱${serviceSubtotal.toLocaleString()}</td>
+            <td class="py-2 text-green-600">
+              ${discount > 0 ? `₱${discount.toLocaleString()}<br><span class="text-xs">${discountLabel}</span>` : '-'}
+            </td>
+          </tr>
+        `;
+      });
+
+      // Global discount if 4 or more different services
+      let globalDiscount = 0;
+      if (differentServices >= 4) {
+        globalDiscount = (subtotal - totalDiscount) * 0.10;
+        totalDiscount += globalDiscount;
+      }
+
+      let grandTotal = subtotal - totalDiscount;
+
+      html += `</tbody></table>`;
+
+      // Summary section
+      html += `
+        <div class="flex flex-col gap-2 text-lg">
+          <div class="flex justify-between"><span class="font-semibold">Subtotal:</span><span>₱${subtotal.toLocaleString()}</span></div>
+          <div class="flex justify-between"><span class="font-semibold text-green-700">Total Discount:</span><span class="text-green-700">-₱${totalDiscount.toLocaleString()}</span></div>
+          <div class="flex justify-between text-2xl font-bold mt-2"><span>Total:</span><span>₱${grandTotal.toLocaleString()}</span></div>
+        </div>
+      `;
+
+      if (globalDiscount > 0) {
+        html += `<div class="mt-4 text-green-700 font-bold text-center">10% discount applied for availing 4 or more different services!</div>`;
+      }
+
+      html += `<div class="mt-2 text-xs text-salonblack/60">* Discounts: 10% off if you avail 3+ of the same service. Additional 10% off total if you avail 4+ different services.</div>`;
+
+      container.innerHTML = html;
+    }
+
+    document.addEventListener('DOMContentLoaded', renderCartSummary);
+  </script>
+</body>
+</html>
