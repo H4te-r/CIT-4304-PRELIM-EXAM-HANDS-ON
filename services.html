@@ -1,144 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - MJV Salon</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        salonblack: '#151515',
-                        salonoff: '#f2f1f0',
-                        salonwhite: '#ffffff'
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - MJV Salon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            salonblack: '#151515',
+            salonoff: '#f2f1f0',
+            salonwhite: '#ffffff'
+          }
         }
-    </script>
+      }
+    }
+  </script>
 </head>
 <body class="bg-salonblack min-h-screen">
-
-    <nav class="flex w-full justify-between items-center px-12 pt-8 z-50 bg-salonblack sticky top-0">
+  <nav class="flex w-full justify-between items-center px-12 pt-8 z-50 bg-salonblack sticky top-0">
     <div class="font-bold text-2xl text-salonwhite">MJV Salon</div>
     <div class="flex gap-12 text-salonwhite font-light text-lg">
-        <a href="index.html">HOME</a>
-        <a href="about.html">ABOUT</a>
-        <a href="services.html">SERVICES</a>
-        <a href="contact.html">CONTACT</a>
-        <a href="specialist.html">SPECIALIST</a>
-        <a href="gallery.html">GALLERY</a>
-        <a href="reviews.html">REVIEWS</a>
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="services.html" class="text-salonoff">SERVICES</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="specialist.html">SPECIALIST</a>
+      <a href="gallery.html">GALLERY</a>
+      <a href="reviews.html">REVIEWS</a>
     </div>
     <a href="transaction.html" class="relative border border-salonwhite px-4 py-2 rounded text-salonwhite hover:bg-salonwhite hover:text-salonblack transition flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A2 2 0 007.5 19h9a2 2 0 001.85-1.3L17 13M7 13V6a1 1 0 011-1h5a1 1 0 011 1v7" />
-        </svg>
-        Cart
-        <span id="cart-badge" class="absolute -top-2 -right-2 bg-white text-black text-xs font-bold rounded-full px-2 py-0.5" style="display:none;">0</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7A2 2 0 007.5 19h9a2 2 0 001.85-1.3L17 13M7 13V6a1 1 0 011-1h5a1 1 0 011 1v7" />
+      </svg>
+      Cart
+      <span id="cart-badge" class="absolute -top-2 -right-2 bg-white text-black text-xs font-bold rounded-full px-2 py-0.5 hidden">0</span>
     </a>
-    </nav>
+  </nav>
 
-    <div class="min-h-screen flex flex-col items-center justify-center px-4 py-10">
-        <div class="bg-salonoff w-full max-w-6xl rounded-none md:rounded-xl shadow-lg p-8 md:p-12">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
-                <div>
-                    <span class="uppercase text-xs tracking-widest text-salonblack/70">What we offer</span>
-                    <h1 class="text-5xl md:text-6xl font-bold text-salonblack mt-2 mb-0 leading-tight tracking-tight">SERVICES</h1>
-                </div>
-            </div>
-
-            <div id="services-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 items-stretch"></div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="border border-salonoff rounded-lg p-6 flex flex-col">
-                    <h4 class="text-xl font-bold text-salonblack mb-2">Complete Makeover</h4>
-                    <p class="text-salonblack/70 mb-4">Cut, color, and styling package for a complete transformation.</p>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-bold text-salonblack">₱9,800</span>
-                        <span class="text-sm text-salonblack/60 line-through">₱12,000</span>
-                    </div>
-                    <div class="mt-auto">
-                        <button onclick="addToCart(7)" class="bg-salonblack text-salonwhite px-4 py-2 rounded hover:bg-salonblack/80 transition w-full">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="border border-salonoff rounded-lg p-6 flex flex-col">
-                    <h4 class="text-xl font-bold text-salonblack mb-2">Maintenance Package</h4>
-                    <p class="text-salonblack/70 mb-4">Regular cut and treatment to maintain your style.</p>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-bold text-salonblack">₱5,200</span>
-                        <span class="text-sm text-salonblack/60 line-through">₱7,100</span>
-                    </div>
-                    <div class="mt-auto">
-                        <button onclick="addToCart(8)" class="bg-salonblack text-salonwhite px-4 py-2 rounded hover:bg-salonblack/80 transition w-full">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
+  <div class="min-h-screen flex flex-col items-center justify-center px-4 py-10">
+    <div class="bg-salonoff w-full max-w-6xl rounded-none md:rounded-xl shadow-lg p-8 md:p-12">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+        <div>
+          <span class="uppercase text-xs tracking-widest text-salonblack/70">What we offer</span>
+          <h1 class="text-5xl md:text-6xl font-bold text-salonblack mt-2 mb-0 leading-tight tracking-tight">SERVICES</h1>
         </div>
-    </div>
+        <div class="mt-4 md:mt-0">
+          <select id="service-filter" class="bg-salonwhite border border-salonblack/20 rounded-lg px-4 py-2 text-salonblack">
+            <option value="all">All Services</option>
+            <option value="hair">Hair Services</option>
+            <option value="treatment">Treatments</option>
+            <option value="special">Special Packages</option>
+          </select>
+        </div>
+      </div>
 
-    <!-- JAVASCRIPT -->
-    <script>
+      <div class="mb-8">
+        <div class="flex flex-wrap gap-4 justify-center">
+          <button onclick="filterServices('all')" class="filter-btn active bg-salonblack text-salonwhite px-6 py-2 rounded-full transition">All</button>
+          <button onclick="filterServices('hair')" class="filter-btn bg-salonwhite text-salonblack px-6 py-2 rounded-full hover:bg-salonblack hover:text-salonwhite transition">Hair</button>
+          <button onclick="filterServices('treatment')" class="filter-btn bg-salonwhite text-salonblack px-6 py-2 rounded-full hover:bg-salonblack hover:text-salonwhite transition">Treatments</button>
+          <button onclick="filterServices('special')" class="filter-btn bg-salonwhite text-salonblack px-6 py-2 rounded-full hover:bg-salonblack hover:text-salonwhite transition">Packages</button>
+        </div>
+      </div>
+
+      <div id="services-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 items-stretch"></div>
+
+      <div class="text-center">
+        <button onclick="showCartModal()" class="bg-salonblack text-salonwhite px-8 py-3 rounded-lg hover:bg-salonblack/80 transition text-lg">
+          View Cart (<span id="total-items">0</span> items)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="cart-modal" class="fixed inset-0 bg-black/50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-salonoff rounded-xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
+        <div class="flex justify-between items-center p-6 border-b border-salonblack/10">
+          <h2 class="text-2xl font-bold text-salonblack">Shopping Cart</h2>
+          <button onclick="closeCartModal()" class="text-salonblack/60 hover:text-salonblack text-2xl">&times;</button>
+        </div>
+        <div id="cart-items" class="p-6 max-h-96 overflow-y-auto"></div>
+        <div class="p-6 border-t border-salonblack/10">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-xl font-bold text-salonblack">Total:</span>
+            <span id="cart-total" class="text-2xl font-bold text-salonblack">₱0</span>
+          </div>
+          <button onclick="checkout()" class="w-full bg-salonblack text-salonwhite py-3 rounded-lg hover:bg-salonblack/80 transition">
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
     const services = [
-        { id: 1, name: "Haircut & Styling", price: 2500, img: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=1000&auto=format&fit=crop", desc: "Professional cuts and styling for all hair types and lengths." },
-        { id: 2, name: "Hair Coloring", price: 6500, img: "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1000&auto=format&fit=crop", desc: "Full color, highlights, balayage, and color correction services." },
-        { id: 3, name: "Hair Treatment", price: 4500, img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1000&auto=format&fit=crop", desc: "Deep conditioning, keratin treatments, and scalp therapy." },
-        { id: 4, name: "Hair Extensions", price: 16500, img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROB4It6JUZ8Kd4PZ1Q5VxoXHikmvBJP7WrDg&s", desc: "Professional hair extensions for length and volume." },
-        { id: 5, name: "Bridal Services", price: 11000, img: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop", desc: "Complete bridal styling for your special day." },
-        { id: 6, name: "Men's Grooming", price: 1900, img: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1000&auto=format&fit=crop", desc: "Professional cuts and styling for men." },
-        { id: 7, name: "Complete Makeover Package", price: 9800, img: "", desc: "Cut, color, and styling package for a complete transformation." },
-        { id: 8, name: "Maintenance Package", price: 5200, img: "", desc: "Regular cut and treatment to maintain your style." }
+      { id: 1, name: "Haircut & Styling", price: 2000, img: "https://images.unsplash.com/photo-1605497788044-5a32c7078486?q=80&w=1000&auto=format&fit=crop", desc: "Professional cuts and styling for all hair types and lengths.", category: "hair" },
+      { id: 2, name: "Hair Coloring", price: 5200, img: "https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=1000&auto=format&fit=crop", desc: "Full color, highlights, balayage, and color correction services.", category: "hair" },
+      { id: 3, name: "Hair Treatment", price: 3600, img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1000&auto=format&fit=crop", desc: "Deep conditioning, keratin treatments, and scalp therapy.", category: "treatment" },
+      { id: 4, name: "Hair Extensions", price: 13200, img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1000&auto=format&fit=crop", desc: "Professional hair extensions for length and volume.", category: "hair" },
+      { id: 5, name: "Bridal Services", price: 8800, img: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop", desc: "Complete bridal styling for your special day.", category: "special" },
+      { id: 6, name: "Men's Grooming", price: 1500, img: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1000&auto=format&fit=crop", desc: "Professional cuts and styling for men.", category: "hair" },
+      { id: 7, name: "Complete Makeover", price: 7800, img: "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1000&auto=format&fit=crop", desc: "Cut, color, and styling package for a complete transformation.", category: "special" },
+      { id: 8, name: "Maintenance Package", price: 4200, img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1000&auto=format&fit=crop", desc: "Regular cut and treatment to maintain your style.", category: "special" }
     ];
 
     let cart = JSON.parse(localStorage.getItem('mjv_cart')) || {};
+    let currentFilter = 'all';
 
     function renderServicesList() {
-        const container = document.getElementById('services-list');
-        container.innerHTML = '';
-        services.slice(0,6).forEach(service => {
-            container.innerHTML += `
-                <div class="bg-salonwhite rounded-lg shadow-lg overflow-hidden flex flex-col h-full">
-                    <img src="${service.img}" alt="${service.name}" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-salonblack mb-2">${service.name}</h3>
-                        <p class="text-salonblack/70 mb-4">${service.desc}</p>
-                        <div class="mt-auto">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="text-2xl font-bold text-salonblack">₱${service.price.toLocaleString()}</span>
-                            </div>
-                            <button onclick="addToCart(${service.id})" class="bg-salonblack text-salonwhite px-4 py-2 rounded hover:bg-salonblack/80 transition w-full">Add to Cart</button>
-                        </div>
-                    </div>
+      const container = document.getElementById('services-list');
+      container.innerHTML = '';
+      
+      const filteredServices = currentFilter === 'all' 
+        ? services 
+        : services.filter(service => service.category === currentFilter);
+      
+      filteredServices.forEach(service => {
+        container.innerHTML += `
+          <div class="bg-salonwhite rounded-lg shadow-lg overflow-hidden flex flex-col h-full transform hover:scale-105 transition-all duration-300">
+            <img src="${service.img}" alt="${service.name}" class="w-full h-48 object-cover">
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-xl font-bold text-salonblack mb-2">${service.name}</h3>
+              <p class="text-salonblack/70 mb-4 text-sm">${service.desc}</p>
+              <div class="mt-auto">
+                <div class="flex justify-between items-center mb-4">
+                  <span class="text-2xl font-bold text-salonblack">₱${service.price.toLocaleString()}</span>
+                  <span class="text-xs bg-salonblack/10 text-salonblack px-2 py-1 rounded-full">${service.category}</span>
                 </div>
-            `;
-        });
-        updateCartBadge();
+                <button onclick="addToCart(${service.id})" class="bg-salonblack text-salonwhite px-4 py-2 rounded hover:bg-salonblack/80 transition w-full">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      updateCartBadge();
+    }
+
+    function filterServices(category) {
+      currentFilter = category;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-salonblack', 'text-salonwhite');
+        btn.classList.add('bg-salonwhite', 'text-salonblack');
+      });
+      event.target.classList.add('active', 'bg-salonblack', 'text-salonwhite');
+      event.target.classList.remove('bg-salonwhite', 'text-salonblack');
+      renderServicesList();
     }
 
     function addToCart(id) {
-        if (!cart[id]) cart[id] = { ...services.find(s => s.id === id), qty: 0 };
-        cart[id].qty++;
-        localStorage.setItem('mjv_cart', JSON.stringify(cart));
-        updateCartBadge(); // instantly update top cart badge
+      if (!cart[id]) cart[id] = { ...services.find(s => s.id === id), qty: 0 };
+      cart[id].qty++;
+      localStorage.setItem('mjv_cart', JSON.stringify(cart));
+      updateCartBadge();
+      
+      const button = event.target;
+      const originalText = button.textContent;
+      button.textContent = 'Added!';
+      button.classList.add('bg-green-600');
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.classList.remove('bg-green-600');
+      }, 1000);
     }
 
     function updateCartBadge() {
-        let count = Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
-        const badge = document.getElementById('cart-badge');
-        if (count > 0) {
-            badge.textContent = count;
-            badge.style.display = 'inline-block';
-        } else {
-            badge.style.display = 'none';
-        }
+      let count = Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
+      const badge = document.getElementById('cart-badge');
+      const totalItems = document.getElementById('total-items');
+      
+      if (count > 0) {
+        badge.textContent = count;
+        badge.classList.remove('hidden');
+        totalItems.textContent = count;
+      } else {
+        badge.classList.add('hidden');
+        totalItems.textContent = '0';
+      }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        renderServicesList();
-        updateCartBadge();
+    function showCartModal() {
+      const modal = document.getElementById('cart-modal');
+      const cartItems = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+      
+      cartItems.innerHTML = '';
+      let total = 0;
+      
+      Object.values(cart).forEach(item => {
+        if (item.qty > 0) {
+          total += item.price * item.qty;
+          cartItems.innerHTML += `
+            <div class="flex justify-between items-center py-3 border-b border-salonblack/10">
+              <div>
+                <h4 class="font-semibold text-salonblack">${item.name}</h4>
+                <p class="text-sm text-salonblack/60">₱${item.price.toLocaleString()} × ${item.qty}</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="updateQuantity(${item.id}, -1)" class="bg-salonblack/10 hover:bg-salonblack/20 rounded-full w-8 h-8 flex items-center justify-center">-</button>
+                <span class="mx-2">${item.qty}</span>
+                <button onclick="updateQuantity(${item.id}, 1)" class="bg-salonblack/10 hover:bg-salonblack/20 rounded-full w-8 h-8 flex items-center justify-center">+</button>
+                <button onclick="removeFromCart(${item.id})" class="text-red-600 hover:text-red-800 ml-2">×</button>
+              </div>
+            </div>
+          `;
+        }
+      });
+      
+      if (Object.values(cart).every(item => item.qty === 0)) {
+        cartItems.innerHTML = '<p class="text-center text-salonblack/60 py-8">Your cart is empty</p>';
+      }
+      
+      cartTotal.textContent = `₱${total.toLocaleString()}`;
+      modal.classList.remove('hidden');
+    }
+
+    function closeCartModal() {
+      document.getElementById('cart-modal').classList.add('hidden');
+    }
+
+    function updateQuantity(id, change) {
+      cart[id].qty += change;
+      if (cart[id].qty < 0) cart[id].qty = 0;
+      if (cart[id].qty === 0) delete cart[id];
+      localStorage.setItem('mjv_cart', JSON.stringify(cart));
+      showCartModal();
+      updateCartBadge();
+    }
+
+    function removeFromCart(id) {
+      delete cart[id];
+      localStorage.setItem('mjv_cart', JSON.stringify(cart));
+      showCartModal();
+      updateCartBadge();
+    }
+
+    function checkout() {
+      if (Object.values(cart).every(item => item.qty === 0)) {
+        alert('Your cart is empty!');
+        return;
+      }
+      
+      const total = Object.values(cart).reduce((sum, item) => sum + (item.price * item.qty), 0);
+      if (confirm(`Proceed to checkout with total of ₱${total.toLocaleString()}?`)) {
+        window.location.href = 'transaction.html';
+      }
+    }
+
+    document.getElementById('service-filter').addEventListener('change', function() {
+      currentFilter = this.value;
+      renderServicesList();
     });
-    </script>
+
+    document.addEventListener('DOMContentLoaded', renderServicesList);
+  </script>
 </body>
 </html>

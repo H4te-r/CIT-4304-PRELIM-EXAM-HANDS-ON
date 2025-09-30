@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Transaction Summary - MJV Salon</title>
+  <title>Checkout - MJV Salon</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -20,7 +21,6 @@
   </script>
 </head>
 <body class="bg-salonblack min-h-screen">
-  <!-- NAVBAR -->
   <nav class="flex w-full justify-between items-center px-12 py-6 z-50 bg-salonblack sticky top-0">
     <div class="font-bold text-2xl text-salonwhite">MJV Salon</div>
     <div class="flex gap-12 text-salonwhite font-light text-lg">
@@ -32,135 +32,389 @@
       <a href="gallery.html">GALLERY</a>
       <a href="reviews.html">REVIEWS</a>
     </div>
-    <a href="services.html" class="border border-salonwhite px-4 py-2 rounded text-salonwhite hover:bg-salonwhite hover:text-salonblack transition">Back to Shop</a>
+    <a href="services.html" class="border border-salonwhite px-4 py-2 rounded text-salonwhite hover:bg-salonwhite hover:text-salonblack transition flex items-center gap-2">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i>
+      Back to Shop
+    </a>
   </nav>
 
-  <!-- TRANSACTION CONTAINER -->
   <div class="min-h-screen flex flex-col items-center justify-center px-4 py-10">
-    <div class="bg-salonoff w-full max-w-4xl rounded-lg shadow-lg p-8 md:p-12">
+    <div class="bg-salonoff w-full max-w-6xl rounded-lg shadow-lg p-8 md:p-12">
       <div class="text-center mb-8">
-        <span class="uppercase text-xs tracking-widest text-salonblack/70">Order Summary</span>
-        <h1 class="text-4xl md:text-5xl font-bold text-salonblack mt-2">Your Cart</h1>
-        <p class="text-salonblack/70 mt-4">Review your selected services and discounts before booking.</p>
+        <span class="uppercase text-xs tracking-widest text-salonblack/70">Secure Checkout</span>
+        <h1 class="text-4xl md:text-5xl font-bold text-salonblack mt-2">Complete Your Booking</h1>
+        <p class="text-salonblack/70 mt-4">Review your services and complete your appointment booking.</p>
       </div>
 
-      <!-- CART SUMMARY -->
-      <div id="cart-summary" class="mb-8"></div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2">
+          <div class="bg-salonwhite rounded-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-salonblack mb-6 flex items-center gap-2">
+              <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+              Order Summary
+            </h2>
+            <div id="cart-items"></div>
+          </div>
 
-      <!-- ACTION BUTTONS -->
-      <div class="flex justify-between items-center mt-8">
-        <a href="services.html" class="bg-salonblack text-salonwhite px-6 py-3 rounded-lg hover:bg-salonblack/80 transition">Back to Services</a>
-        <button onclick="clearCart()" class="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition">Clear Cart</button>
+          <div class="bg-salonwhite rounded-lg p-6 mb-6">
+            <h2 class="text-2xl font-bold text-salonblack mb-6 flex items-center gap-2">
+              <i data-lucide="calendar" class="w-6 h-6"></i>
+              Appointment Details
+            </h2>
+            <form id="appointment-form" class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-salonblack mb-2">Preferred Date</label>
+                  <input type="date" id="appointment-date" required class="w-full border border-salonblack/20 rounded-lg px-3 py-2 focus:ring-2 focus:ring-salonblack focus:border-transparent">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-salonblack mb-2">Preferred Time</label>
+                  <select id="appointment-time" required class="w-full border border-salonblack/20 rounded-lg px-3 py-2 focus:ring-2 focus:ring-salonblack focus:border-transparent">
+                    <option value="">Select Time</option>
+                    <option value="09:00">9:00 AM</option>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="11:00">11:00 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <option value="13:00">1:00 PM</option>
+                    <option value="14:00">2:00 PM</option>
+                    <option value="15:00">3:00 PM</option>
+                    <option value="16:00">4:00 PM</option>
+                    <option value="17:00">5:00 PM</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-salonblack mb-2">Special Requests</label>
+                <textarea id="special-requests" rows="3" class="w-full border border-salonblack/20 rounded-lg px-3 py-2 focus:ring-2 focus:ring-salonblack focus:border-transparent" placeholder="Any specific requests or notes for your appointment..."></textarea>
+              </div>
+            </form>
+          </div>
+
+          <div class="bg-salonwhite rounded-lg p-6">
+            <h2 class="text-2xl font-bold text-salonblack mb-6 flex items-center gap-2">
+              <i data-lucide="user" class="w-6 h-6"></i>
+              Contact Information
+            </h2>
+            <form id="contact-form" class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-salonblack mb-2">First Name</label>
+                  <input type="text" id="first-name" required class="w-full border border-salonblack/20 rounded-lg px-3 py-2 focus:ring-2 focus:ring-salonblack focus:border-transparent">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-salonblack mb-2">Last Name</label>
+                  <input type="text" id="last-name" required class="w-full border border-salonblack/20 rounded-lg px-3 py-2 focus:ring-2 focus:ring-salonblack focus:border-transparent">
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-salonblack mb-2">Email</label>
+                  <input type="email" id="email" required class="w-full border border-salonblack/20 rounded-lg px-3 py-2 focus:ring-2 focus:ring-salonblack focus:border-transparent">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-salonblack mb-2">Phone Number</label>
+                  <input type="tel" id="phone" required class="w-full border border-salonblack/20 rounded-lg px-3 py-2 focus:ring-2 focus:ring-salonblack focus:border-transparent">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="lg:col-span-1">
+          <div class="bg-salonwhite rounded-lg p-6 sticky top-24">
+            <h2 class="text-2xl font-bold text-salonblack mb-6 flex items-center gap-2">
+              <i data-lucide="receipt" class="w-6 h-6"></i>
+              Order Total
+            </h2>
+            <div id="order-summary"></div>
+            <div class="mt-6 space-y-3">
+              <button onclick="proceedToPayment()" class="w-full bg-salonblack text-salonwhite py-3 rounded-lg hover:bg-salonblack/80 transition font-semibold">
+                Proceed to Payment
+              </button>
+              <a href="services.html" class="w-full bg-salonoff text-salonblack py-3 rounded-lg hover:bg-salonblack/10 transition font-semibold text-center block">
+                Continue Shopping
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="payment-modal" class="fixed inset-0 bg-black/50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+      <div class="bg-salonwhite rounded-xl max-w-md w-full p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-bold text-salonblack">Payment Method</h2>
+          <button onclick="closePaymentModal()" class="text-salonblack/60 hover:text-salonblack text-2xl">&times;</button>
+        </div>
+        <div class="space-y-4">
+          <div class="border border-salonblack/20 rounded-lg p-4 cursor-pointer hover:border-salonblack/40 transition" onclick="selectPaymentMethod('cash')">
+            <div class="flex items-center gap-3">
+              <input type="radio" name="payment" value="cash" class="text-salonblack">
+              <i data-lucide="banknote" class="w-5 h-5"></i>
+              <span class="font-medium">Cash Payment</span>
+            </div>
+            <p class="text-sm text-salonblack/60 mt-1">Pay when you arrive at the salon</p>
+          </div>
+          <div class="border border-salonblack/20 rounded-lg p-4 cursor-pointer hover:border-salonblack/40 transition" onclick="selectPaymentMethod('gcash')">
+            <div class="flex items-center gap-3">
+              <input type="radio" name="payment" value="gcash" class="text-salonblack">
+              <i data-lucide="smartphone" class="w-5 h-5"></i>
+              <span class="font-medium">GCash</span>
+            </div>
+            <p class="text-sm text-salonblack/60 mt-1">Pay via GCash mobile wallet</p>
+          </div>
+          <div class="border border-salonblack/20 rounded-lg p-4 cursor-pointer hover:border-salonblack/40 transition" onclick="selectPaymentMethod('card')">
+            <div class="flex items-center gap-3">
+              <input type="radio" name="payment" value="card" class="text-salonblack">
+              <i data-lucide="credit-card" class="w-5 h-5"></i>
+              <span class="font-medium">Credit/Debit Card</span>
+            </div>
+            <p class="text-sm text-salonblack/60 mt-1">Pay with your card</p>
+          </div>
+        </div>
+        <div class="mt-6 space-y-3">
+          <button onclick="confirmBooking()" class="w-full bg-salonblack text-salonwhite py-3 rounded-lg hover:bg-salonblack/80 transition">
+            Confirm Booking
+          </button>
+          <button onclick="closePaymentModal()" class="w-full border border-salonblack/20 text-salonblack py-3 rounded-lg hover:bg-salonblack/5 transition">
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
     const services = [
-      { id: 1, name: "Haircut & Styling", price: 2500 },
-      { id: 2, name: "Hair Coloring", price: 6500 },
-      { id: 3, name: "Hair Treatment", price: 4500 },
-      { id: 4, name: "Hair Extensions", price: 16500 },
-      { id: 5, name: "Bridal Services", price: 11000 },
-      { id: 6, name: "Men's Grooming", price: 1900 },
-      { id: 7, name: "Complete Makeover Package", price: 9800 },
-      { id: 8, name: "Maintenance Package", price: 5200 }
+      { id: 1, name: "Haircut & Styling", price: 2000, duration: "60 mins" },
+      { id: 2, name: "Hair Coloring", price: 5200, duration: "120 mins" },
+      { id: 3, name: "Hair Treatment", price: 3600, duration: "90 mins" },
+      { id: 4, name: "Hair Extensions", price: 13200, duration: "180 mins" },
+      { id: 5, name: "Bridal Services", price: 8800, duration: "150 mins" },
+      { id: 6, name: "Men's Grooming", price: 1500, duration: "45 mins" },
+      { id: 7, name: "Complete Makeover", price: 7800, duration: "180 mins" },
+      { id: 8, name: "Maintenance Package", price: 4200, duration: "90 mins" }
     ];
+
+    let selectedPaymentMethod = null;
 
     function getCart() {
       return JSON.parse(localStorage.getItem('mjv_cart')) || {};
     }
 
-    function clearCart() {
-      localStorage.removeItem('mjv_cart');
-      renderCartSummary();
-    }
-
-    function renderCartSummary() {
+    function calculateDiscounts() {
       const cart = getCart();
-      const container = document.getElementById('cart-summary');
-
-      if (Object.keys(cart).length === 0) {
-        container.innerHTML = `<div class="text-center text-salonblack/60 text-lg py-12">Your cart is empty.</div>`;
-        return;
-      }
-
-      let html = `
-        <table class="w-full text-left mb-6 border-collapse">
-          <thead class="border-b border-salonblack/20">
-            <tr>
-              <th class="pb-2">Service</th>
-              <th class="pb-2">Price</th>
-              <th class="pb-2">Qty</th>
-              <th class="pb-2">Subtotal</th>
-              <th class="pb-2">Discount</th>
-            </tr>
-          </thead>
-          <tbody>
-      `;
-
       let subtotal = 0;
       let totalDiscount = 0;
+      let totalQty = 0;
       let differentServices = Object.keys(cart).length;
 
-      // Loop each service in cart
       Object.values(cart).forEach(item => {
         let serviceSubtotal = item.price * item.qty;
         let discount = 0;
-        let discountLabel = '';
 
-        // Apply same-service discount (10% if qty >= 3)
         if (item.qty >= 3) {
           discount = serviceSubtotal * 0.10;
-          discountLabel = '10% off (3+ same service)';
         }
 
         subtotal += serviceSubtotal;
         totalDiscount += discount;
-
-        html += `
-          <tr class="border-b border-salonblack/10">
-            <td class="py-2">${item.name}</td>
-            <td class="py-2">₱${item.price.toLocaleString()}</td>
-            <td class="py-2">${item.qty}</td>
-            <td class="py-2">₱${serviceSubtotal.toLocaleString()}</td>
-            <td class="py-2 text-green-600">
-              ${discount > 0 ? `₱${discount.toLocaleString()}<br><span class="text-xs">${discountLabel}</span>` : '-'}
-            </td>
-          </tr>
-        `;
+        totalQty += item.qty;
       });
 
-      // Global discount if 4 or more different services
       let globalDiscount = 0;
       if (differentServices >= 4) {
         globalDiscount = (subtotal - totalDiscount) * 0.10;
         totalDiscount += globalDiscount;
       }
 
-      let grandTotal = subtotal - totalDiscount;
-
-      html += `</tbody></table>`;
-
-      // Summary section
-      html += `
-        <div class="flex flex-col gap-2 text-lg">
-          <div class="flex justify-between"><span class="font-semibold">Subtotal:</span><span>₱${subtotal.toLocaleString()}</span></div>
-          <div class="flex justify-between"><span class="font-semibold text-green-700">Total Discount:</span><span class="text-green-700">-₱${totalDiscount.toLocaleString()}</span></div>
-          <div class="flex justify-between text-2xl font-bold mt-2"><span>Total:</span><span>₱${grandTotal.toLocaleString()}</span></div>
-        </div>
-      `;
-
-      if (globalDiscount > 0) {
-        html += `<div class="mt-4 text-green-700 font-bold text-center">10% discount applied for availing 4 or more different services!</div>`;
+      let bulkDiscount = 0;
+      if (totalQty > 3) {
+        bulkDiscount = (subtotal - totalDiscount) * 0.05;
+        totalDiscount += bulkDiscount;
       }
 
-      html += `<div class="mt-2 text-xs text-salonblack/60">* Discounts: 10% off if you avail 3+ of the same service. Additional 10% off total if you avail 4+ different services.</div>`;
-
-      container.innerHTML = html;
+      return {
+        subtotal,
+        totalDiscount,
+        grandTotal: subtotal - totalDiscount,
+        globalDiscount,
+        bulkDiscount
+      };
     }
 
-    document.addEventListener('DOMContentLoaded', renderCartSummary);
+    function renderCartItems() {
+      const cart = getCart();
+      const container = document.getElementById('cart-items');
+
+      if (Object.keys(cart).length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12">
+            <i data-lucide="shopping-cart" class="w-16 h-16 text-salonblack/30 mx-auto mb-4"></i>
+            <p class="text-salonblack/60 text-lg">Your cart is empty</p>
+            <a href="services.html" class="inline-block mt-4 bg-salonblack text-salonwhite px-6 py-2 rounded-lg hover:bg-salonblack/80 transition">
+              Browse Services
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = Object.values(cart).map(item => {
+        const service = services.find(s => s.id === item.id);
+        const serviceSubtotal = item.price * item.qty;
+        const discount = item.qty >= 3 ? serviceSubtotal * 0.10 : 0;
+
+        return `
+          <div class="flex justify-between items-center py-4 border-b border-salonblack/10 last:border-b-0">
+            <div class="flex-1">
+              <h3 class="font-semibold text-salonblack">${item.name}</h3>
+              <p class="text-sm text-salonblack/60">${service?.duration || 'Duration varies'}</p>
+              ${discount > 0 ? `<p class="text-xs text-green-600">10% discount applied (3+ same service)</p>` : ''}
+            </div>
+            <div class="text-right">
+              <p class="font-semibold text-salonblack">₱${serviceSubtotal.toLocaleString()}</p>
+              <p class="text-sm text-salonblack/60">₱${item.price.toLocaleString()} × ${item.qty}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderOrderSummary() {
+      const { subtotal, totalDiscount, grandTotal, globalDiscount, bulkDiscount } = calculateDiscounts();
+      const container = document.getElementById('order-summary');
+
+      container.innerHTML = `
+        <div class="space-y-3">
+          <div class="flex justify-between">
+            <span class="text-salonblack/70">Subtotal</span>
+            <span class="font-semibold">₱${subtotal.toLocaleString()}</span>
+          </div>
+          ${totalDiscount > 0 ? `
+            <div class="flex justify-between text-green-600">
+              <span>Discounts</span>
+              <span>-₱${totalDiscount.toLocaleString()}</span>
+            </div>
+          ` : ''}
+          <div class="border-t border-salonblack/10 pt-3">
+            <div class="flex justify-between text-lg font-bold">
+              <span>Total</span>
+              <span>₱${grandTotal.toLocaleString()}</span>
+            </div>
+          </div>
+        </div>
+        
+        ${globalDiscount > 0 ? `
+          <div class="mt-4 p-3 bg-green-50 rounded-lg">
+            <p class="text-sm text-green-700 font-medium">
+              <i data-lucide="gift" class="w-4 h-4 inline mr-1"></i>
+              10% off for 4+ different services!
+            </p>
+          </div>
+        ` : ''}
+        
+        ${bulkDiscount > 0 ? `
+          <div class="mt-2 p-3 bg-green-50 rounded-lg">
+            <p class="text-sm text-green-700 font-medium">
+              <i data-lucide="star" class="w-4 h-4 inline mr-1"></i>
+              Extra 5% off for 3+ total services!
+            </p>
+          </div>
+        ` : ''}
+      `;
+    }
+
+    function proceedToPayment() {
+      const cart = getCart();
+      if (Object.keys(cart).length === 0) {
+        alert('Your cart is empty! Please add services first.');
+        return;
+      }
+
+      const appointmentDate = document.getElementById('appointment-date').value;
+      const appointmentTime = document.getElementById('appointment-time').value;
+      const firstName = document.getElementById('first-name').value;
+      const lastName = document.getElementById('last-name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+
+      if (!appointmentDate || !appointmentTime || !firstName || !lastName || !email || !phone) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      document.getElementById('payment-modal').classList.remove('hidden');
+    }
+
+    function selectPaymentMethod(method) {
+      selectedPaymentMethod = method;
+      document.querySelectorAll('input[name="payment"]').forEach(radio => {
+        radio.checked = radio.value === method;
+      });
+    }
+
+    function closePaymentModal() {
+      document.getElementById('payment-modal').classList.add('hidden');
+      selectedPaymentMethod = null;
+      document.querySelectorAll('input[name="payment"]').forEach(radio => {
+        radio.checked = false;
+      });
+    }
+
+    function confirmBooking() {
+      if (!selectedPaymentMethod) {
+        alert('Please select a payment method.');
+        return;
+      }
+
+      const { grandTotal } = calculateDiscounts();
+      const cart = getCart();
+      const appointmentDate = document.getElementById('appointment-date').value;
+      const appointmentTime = document.getElementById('appointment-time').value;
+      const specialRequests = document.getElementById('special-requests').value;
+      const firstName = document.getElementById('first-name').value;
+      const lastName = document.getElementById('last-name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+
+      const bookingData = {
+        id: Date.now(),
+        customer: { firstName, lastName, email, phone },
+        appointment: { date: appointmentDate, time: appointmentTime, requests: specialRequests },
+        services: Object.values(cart),
+        payment: { method: selectedPaymentMethod, amount: grandTotal },
+        status: 'confirmed',
+        createdAt: new Date().toISOString()
+      };
+
+      const existingBookings = JSON.parse(localStorage.getItem('mjv_bookings')) || [];
+      existingBookings.push(bookingData);
+      localStorage.setItem('mjv_bookings', JSON.stringify(existingBookings));
+
+      localStorage.removeItem('mjv_cart');
+
+      alert(`Booking confirmed! Your appointment is scheduled for ${new Date(appointmentDate).toLocaleDateString()} at ${appointmentTime}. We'll send confirmation details to ${email}.`);
+      
+      window.location.href = 'services.html';
+    }
+
+    function setMinDate() {
+      const dateInput = document.getElementById('appointment-date');
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.min = tomorrow.toISOString().split('T')[0];
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+      setMinDate();
+      renderCartItems();
+      renderOrderSummary();
+    });
   </script>
 </body>
 </html>
